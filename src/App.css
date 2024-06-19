@@ -44,6 +44,10 @@
   color: white;
 }
 
+.arrow-back {
+  transform: rotate(180deg);
+}
+
 .bank-info {
   width: 100%;
   box-sizing: border-box;

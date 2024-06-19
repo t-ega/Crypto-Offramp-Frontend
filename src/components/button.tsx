@@ -1,5 +1,5 @@
 interface IButtonProps {
-  content: string;
+  content: any;
   variant?: string;
   onClick?: () => void;
 }

@@ -1,5 +1,6 @@
 import { CheckoutDetails } from "../types";
 import { CheckoutContext } from "../utils/checkout-content";
+import "../checkout.css";
 import Button from "./button";
 import ConfirmPayment from "./confirm-payment";
 import EntryCard from "./entry-card";
@@ -10,7 +11,7 @@ import React, { useState } from "react";
 
 const CheckOut = () => {
   const [value, setValue] = useState<CheckoutDetails>();
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
 
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -23,15 +24,20 @@ const CheckOut = () => {
     }));
   };
 
-  // const
+  const setData = (data: Partial<CheckoutDetails>) => {
+    setValue((prev) => ({
+      ...prev,
+      ...data,
+    }));
+  };
 
   const currentCard = () => {
     switch (currentStep) {
-      case 0:
-        return <EntryCard handleInput={handleInput} />;
       case 1:
-        return <PaymentDetails handleInput={handleInput} />;
+        return <EntryCard handleInput={handleInput} setData={setData} />;
       case 2:
+        return <PaymentDetails handleInput={handleInput} />;
+      case 3:
         return <ConfirmPayment />;
       default:
         return <EntryCard handleInput={handleInput} />;
@@ -43,7 +49,20 @@ const CheckOut = () => {
       <CheckoutContext.Provider value={value}>
         <div className="checkout">
           <div>
-            <Button content="X" />
+            <Button
+              onClick={() => {
+                if (currentStep > 1) {
+                  setCurrentStep((prev) => (prev -= 1));
+                }
+              }}
+              content={
+                <img
+                  src="https://img.icons8.com/?size=12&id=99266&format=png&color=000000&rotation=180"
+                  alt="arrow-back"
+                  className="arrow-back"
+                />
+              }
+            />
           </div>
 
           {currentCard()}
@@ -53,9 +72,7 @@ const CheckOut = () => {
             content="Continue"
             onClick={() => {
               if (currentStep < 3) {
-                setCurrentStep((prev) => {
-                  return (prev += 1);
-                });
+                setCurrentStep((prev) => (prev += 1));
               }
             }}
             variant="full"
@@ -67,7 +84,7 @@ const CheckOut = () => {
               color: "white",
             }}
           >
-            Step 1 of 3
+            Step {currentStep} of 3
           </div>
         </div>
       </CheckoutContext.Provider>

@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CheckoutContext } from "../utils/checkout-content";
 import { ICheckoutProps } from "../types";
 
 const FiatInput = (props: ICheckoutProps) => {
   const { handleInput } = props;
+  const [loading, setLoading] = useState(false);
   const context = useContext(CheckoutContext);
 
   return (
@@ -15,10 +16,11 @@ const FiatInput = (props: ICheckoutProps) => {
           style={{ borderRadius: "3px", border: "none" }}
           type="number"
           onChange={(e) => handleInput(e)}
-          name="send_amount"
-          value={context?.send_amount || ""}
+          name="receive_amount"
+          value={context?.receive_amount || ""}
         />
         <div className="icon">
+          {loading && <div className="lds-hourglass"></div>}
           <p style={{ color: "black" }}>NGN</p>
         </div>
       </div>

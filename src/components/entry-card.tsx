@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import Button from "./button";
+import { useContext } from "react";
 import Sol from "../assets/sol.svg";
 import { CheckoutContext } from "../utils/checkout-content";
 import { CheckoutDetails, ICheckoutProps } from "../types";
@@ -8,7 +7,7 @@ import FiatInput from "./fiat-input";
 
 const EntryCard = (props: ICheckoutProps) => {
   const context = useContext(CheckoutContext);
-  const { handleInput } = props;
+  const { handleInput, setData } = props;
   return (
     <div>
       <div className="currency-card">
@@ -29,7 +28,7 @@ const EntryCard = (props: ICheckoutProps) => {
         <p>#10,309,200.34</p>
       </div>
 
-      <CryptoInput handleInput={handleInput} />
+      <CryptoInput handleInput={handleInput} setData={setData!} />
 
       <div className="swap">
         <div className="swap-icon">

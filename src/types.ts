@@ -13,4 +13,6 @@ export interface ICheckoutProps {
   handleInput: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
+
+  setData?: (e: Partial<CheckoutDetails>) => void;
 }

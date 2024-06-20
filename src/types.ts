@@ -3,6 +3,8 @@ export type CheckoutDetails = {
   account_number?: string;
   account_name?: string;
   from_currency?: string;
+  crypto_name?: string;
+  crypto_display_name?: string;
   currency_price?: number;
   send_amount?: number;
   processing_fee?: number;

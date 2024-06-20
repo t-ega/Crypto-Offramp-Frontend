@@ -8,6 +8,16 @@ import FiatInput from "./fiat-input";
 const EntryCard = (props: ICheckoutProps) => {
   const context = useContext(CheckoutContext);
   const { handleInput, setData } = props;
+
+  function capitalizeFirstLetter(inputString: string) {
+    return inputString.charAt(0).toUpperCase() + inputString.slice(1);
+  }
+
+  let NGN = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "NGN",
+  });
+
   return (
     <div>
       <div className="currency-card">
@@ -21,11 +31,12 @@ const EntryCard = (props: ICheckoutProps) => {
             <img src={Sol} />
           </div>
           <div>
-            <h2>Solana</h2>
+            <h2>
+              {capitalizeFirstLetter(context?.crypto_display_name || "N/A")}
+            </h2>
           </div>
         </div>
-        <h3>$34,000</h3>
-        <p>#10,309,200.34</p>
+        <h3>{NGN.format(context?.currency_price || 0)}</h3>
       </div>
 
       <CryptoInput handleInput={handleInput} setData={setData!} />

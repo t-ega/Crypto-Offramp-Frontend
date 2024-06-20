@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { CheckoutContext } from "../utils/checkout-content";
 import { useQueries } from "@tanstack/react-query";
 import { fetchCryptoCurrencies, getQuotations } from "../utils/queries";
-import { CurrencyListSchema } from "../utils/validation/currency-list";
+import {
+  CurrencyListSchema,
+  CurrencyType,
+} from "../utils/validation/currency-list";
 import { toast } from "react-toastify";
 
 import { CheckoutDetails } from "../types";
@@ -19,28 +22,22 @@ const CryptoInput = (props: CryptoProps) => {
   const context = useContext(CheckoutContext);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const [cryptocurrencies, setCryptocurrencies] = useState<
-    { shortName: string; currency: string }[]
-  >([]);
+  const [cryptocurrencies, setCryptocurrencies] = useState<CurrencyType[]>([]);
 
-  const [selectedCrypto, setSelectedCrypto] = useState<{
-    shortName: string;
-    currency: string;
-  }>();
+  const [selectedCrypto, setSelectedCrypto] = useState<CurrencyType>();
 
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const handleCryptoSelect = (crypto: {
-    shortName: string;
-    currency: string;
-  }) => {
+  const handleCryptoSelect = (crypto: CurrencyType) => {
     setSelectedCrypto(crypto);
-    setData({ from_currency: crypto.currency });
+    setData({
+      from_currency: crypto.currency,
+      crypto_name: crypto.shortName,
+      crypto_display_name: crypto.display_name,
+    });
     setShowDropdown(false);
-    // toast.success(crypto.currency);
-    // quotationQuery.refetch();
   };
 
   const handleGetQuotation = () => {
@@ -61,6 +58,7 @@ const CryptoInput = (props: CryptoProps) => {
         queryKey: ["availableCurrencies"],
         queryFn: () => fetchCryptoCurrencies(),
         staleTime: 1000 * 60 * 60 * 24,
+        refetchOnMount: false,
       },
       {
         queryKey: ["quotationCrypto", context?.from_currency],
@@ -73,11 +71,10 @@ const CryptoInput = (props: CryptoProps) => {
 
         enabled: !!context?.send_amount,
         retry: false,
+        refetchOnMount: false,
       },
     ],
   });
-
-  // displayErrorMessages
 
   useEffect(() => {
     const response = currenciesQuery.data?.data;
@@ -94,7 +91,11 @@ const CryptoInput = (props: CryptoProps) => {
     }
 
     setCryptocurrencies(validation.data);
-    handleCryptoSelect(validation.data[0]);
+
+    const selecetedCurrency =
+      validation.data.find((e) => e.shortName == context?.crypto_name) ||
+      validation.data[0];
+    handleCryptoSelect(selecetedCurrency);
   }, [currenciesQuery.data]);
 
   useEffect(() => {
@@ -112,6 +113,7 @@ const CryptoInput = (props: CryptoProps) => {
     setData({
       receive_amount: validatedData.amountToReceive,
       processing_fee: validatedData.serviceCharge,
+      currency_price: validatedData.marketPrice,
     });
   }, [quotationQuery.data]);
 
@@ -123,6 +125,23 @@ const CryptoInput = (props: CryptoProps) => {
     const msg = apiRequest.formatApiErrorMessage(quotationQuery.error);
     toast.error(msg, { toastId: 1 });
   }
+
+  useEffect(() => {
+    if (currenciesQuery.error) {
+      toast.error("Unable to fetch currencies", { toastId: "3" });
+    }
+
+    if (quotationQuery.error) {
+      const msg = apiRequest.formatApiErrorMessage(quotationQuery.error);
+      toast.error(msg, { toastId: 1 });
+      // Reset context data
+      setData({
+        send_amount: undefined,
+        receive_amount: undefined,
+        processing_fee: undefined,
+      });
+    }
+  }, [currenciesQuery.error, quotationQuery.error]);
 
   return (
     <div className="amount">
@@ -150,7 +169,7 @@ const CryptoInput = (props: CryptoProps) => {
             <div className="lds-hourglass"> </div>
           ) : (
             <>
-              ▼<p style={{ color: "black" }}>{selectedCrypto?.shortName}</p>
+              ▼<p style={{ color: "black" }}>{context?.crypto_name}</p>
             </>
           )}
         </div>

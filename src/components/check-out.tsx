@@ -36,11 +36,11 @@ const CheckOut = () => {
       case 1:
         return <EntryCard handleInput={handleInput} setData={setData} />;
       case 2:
-        return <PaymentDetails handleInput={handleInput} />;
+        return <PaymentDetails handleInput={handleInput} setData={setData} />;
       case 3:
         return <ConfirmPayment />;
       default:
-        return <EntryCard handleInput={handleInput} />;
+        return <EntryCard handleInput={handleInput} setData={setData} />;
     }
   };
 
@@ -67,7 +67,10 @@ const CheckOut = () => {
 
           {currentCard()}
 
-          <Summary amount={value?.send_amount} processingFee={100} />
+          <Summary
+            amount={value?.send_amount}
+            processingFee={value?.processing_fee}
+          />
           <Button
             content="Continue"
             onClick={() => {

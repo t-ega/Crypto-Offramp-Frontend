@@ -1,11 +1,61 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CheckoutContext } from "../utils/checkout-content";
 import { ICheckoutProps } from "../types";
+import { useQuery } from "@tanstack/react-query";
+import { getQuotations } from "../utils/queries";
+import { toast } from "react-toastify";
+import { MarketPriceSchema } from "../utils/validation/market-price";
+import { z } from "zod";
 
 const FiatInput = (props: ICheckoutProps) => {
-  const { handleInput } = props;
-  const [loading, setLoading] = useState(false);
+  const { handleInput, setData } = props;
   const context = useContext(CheckoutContext);
+
+  const handleGetQuotation = () => {
+    if (!context?.receive_amount) return;
+    const valid = parseFloat(context?.receive_amount.toString());
+
+    if (!valid) {
+      toast.error("Please ensure you passed a valid amount");
+      return;
+    }
+    const isInValidRange = z.number().min(500).finite().safeParse(valid);
+    if (isInValidRange.error) {
+      toast.error("Amount cannot be less than 500!");
+      return;
+    }
+
+    quotationQuery.refetch();
+  };
+
+  const quotationQuery = useQuery({
+    queryKey: ["quotationFiat"],
+    queryFn: () =>
+      getQuotations({
+        vol: context?.receive_amount!,
+        quote_type: "receive",
+        currency: context?.from_currency!,
+      }),
+    enabled: false,
+  });
+
+  useEffect(() => {
+    const response = quotationQuery?.data;
+    if (!response) return;
+
+    const validation = MarketPriceSchema.safeParse(response.data);
+
+    if (validation.error) {
+      toast.error("😓Could not parse server conversion response");
+      return;
+    }
+    const validatedData = validation.data;
+
+    setData({
+      send_amount: validatedData.amountToReceive,
+      processing_fee: validatedData.serviceCharge,
+    });
+  }, [quotationQuery.data]);
 
   return (
     <div className="amount">
@@ -16,11 +66,12 @@ const FiatInput = (props: ICheckoutProps) => {
           style={{ borderRadius: "3px", border: "none" }}
           type="number"
           onChange={(e) => handleInput(e)}
+          onBlur={handleGetQuotation}
           name="receive_amount"
           value={context?.receive_amount || ""}
         />
         <div className="icon">
-          {loading && <div className="lds-hourglass"></div>}
+          {quotationQuery.isFetching && <div className="lds-hourglass"></div>}
           <p style={{ color: "black" }}>NGN</p>
         </div>
       </div>

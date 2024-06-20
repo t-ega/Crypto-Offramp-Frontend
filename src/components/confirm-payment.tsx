@@ -1,6 +1,9 @@
-import { Summary } from "./summary";
+import { useContext } from "react";
+import { CheckoutContext } from "../utils/checkout-content";
 
 const ConfirmPayment = () => {
+  const context = useContext(CheckoutContext);
+
   return (
     <div>
       <h2 className="info">Confirm Transaction</h2>
@@ -12,7 +15,7 @@ const ConfirmPayment = () => {
             type="number"
             className="bank-info"
             disabled
-            value={"2131645271"}
+            value={context?.account_number}
           />
         </div>
         <div>
@@ -21,7 +24,7 @@ const ConfirmPayment = () => {
             type="text"
             className="bank-info"
             disabled
-            value={"WEMA BANK"}
+            value={context?.account_name}
           />
         </div>
       </div>

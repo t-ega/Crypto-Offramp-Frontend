@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 import { CheckoutDetails } from "../types";
 import { MarketPriceSchema } from "../utils/validation/market-price";
+import apiRequest from "../utils/api-request";
 
 export interface CryptoProps {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -38,6 +39,8 @@ const CryptoInput = (props: CryptoProps) => {
     setSelectedCrypto(crypto);
     setData({ from_currency: crypto.currency });
     setShowDropdown(false);
+    // toast.success(crypto.currency);
+    // quotationQuery.refetch();
   };
 
   const handleGetQuotation = () => {
@@ -57,20 +60,24 @@ const CryptoInput = (props: CryptoProps) => {
       {
         queryKey: ["availableCurrencies"],
         queryFn: () => fetchCryptoCurrencies(),
-        staleTime: 20 * 1000,
+        staleTime: 1000 * 60 * 60 * 24,
       },
       {
-        queryKey: ["quotation"],
+        queryKey: ["quotationCrypto", context?.from_currency],
         queryFn: () =>
           getQuotations({
             vol: context?.send_amount!,
             quote_type: "send",
             currency: context?.from_currency!,
           }),
-        enabled: false,
+
+        enabled: !!context?.send_amount,
+        retry: false,
       },
     ],
   });
+
+  // displayErrorMessages
 
   useEffect(() => {
     const response = currenciesQuery.data?.data;
@@ -79,7 +86,10 @@ const CryptoInput = (props: CryptoProps) => {
     const validation = CurrencyListSchema.safeParse(response);
 
     if (validation.error) {
-      toast.error("😓Could not parse server currencies response");
+      toast.error("😓 Could not parse server currencies response", {
+        icon: false,
+        toastId: "2",
+      });
       return;
     }
 
@@ -106,7 +116,12 @@ const CryptoInput = (props: CryptoProps) => {
   }, [quotationQuery.data]);
 
   if (currenciesQuery.error) {
-    toast.error("Unable to fetch currencies");
+    toast.error("Unable to fetch currencies", { toastId: "3" });
+  }
+
+  if (quotationQuery.error) {
+    const msg = apiRequest.formatApiErrorMessage(quotationQuery.error);
+    toast.error(msg, { toastId: 1 });
   }
 
   return (
@@ -117,7 +132,6 @@ const CryptoInput = (props: CryptoProps) => {
           className="amount-input"
           style={{ borderRadius: "3px", border: "none" }}
           type="number"
-          min={1}
           onChange={(e) => handleInput(e)}
           onBlur={handleGetQuotation}
           name="send_amount"
@@ -130,8 +144,6 @@ const CryptoInput = (props: CryptoProps) => {
             if (currenciesQuery.data) {
               return handleDropdownToggle();
             }
-
-            toast.error("Uh oh! Unable to fetch currencies");
           }}
         >
           {currenciesQuery.isFetching || quotationQuery.isFetching ? (

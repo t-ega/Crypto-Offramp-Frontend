@@ -26,6 +26,17 @@ class ApiRequest {
   async get(url: string) {
     return await this.httpClient.get(url);
   }
+
+  formatApiErrorMessage(e: any) {
+    const response = e.response;
+    const data = e.response?.data;
+    if (response && data) {
+      const msg = data.errors ?? data.message;
+      return msg;
+    }
+
+    e.message;
+  }
 }
 
 export default new ApiRequest().getInstance();

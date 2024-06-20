@@ -20,3 +20,18 @@ export const getQuotations = async (data: Quotation) => {
   console.log("Emd res", res.data);
   return res.data;
 };
+
+export const listBanks = async () => {
+  return await apiRequest.get(ENDPOINTS.LIST_BANKS);
+};
+
+type AccountDetails = {
+  bank_code: string;
+  account_number: string;
+};
+
+export const resolveBank = async (data: AccountDetails) => {
+  const { bank_code, account_number } = data;
+  const url = `${ENDPOINTS.RESOLVE_BANK}?bank_code=${bank_code}&account_number=${account_number}`;
+  return await apiRequest.get(url);
+};

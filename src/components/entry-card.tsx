@@ -39,7 +39,7 @@ const EntryCard = (props: ICheckoutProps) => {
         </div>
       </div>
 
-      <FiatInput handleInput={handleInput} />
+      <FiatInput handleInput={handleInput} setData={setData} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const MarketPriceSchema = z
+export const QuotationSchema = z
   .object({
     market_price: z.number(),
     amount_to_receive: z.number(),
@@ -11,3 +11,5 @@ export const MarketPriceSchema = z
     marketPrice: o.market_price,
     amountToReceive: o.amount_to_receive,
   }));
+
+export type QuotationSchemaType = z.infer<typeof QuotationSchema>;

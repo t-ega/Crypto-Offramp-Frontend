@@ -3,18 +3,21 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
-import CheckOut from "./components/check-out";
-import ConfirmationModal from "./components/confirm-modal";
-
-const queryClient = new QueryClient();
+import "./modalStyles.css"; // Ensure to import the CSS styles
+import CheckOutModal from "./components/checkout-modal";
+import { useState } from "react";
 
 function App() {
-  console.log("Lo");
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const handleModalClose = () => {
+    setModalVisible(false);
+  };
   return (
-    <QueryClientProvider client={queryClient}>
-      <ToastContainer />
-      <ConfirmationModal />
-    </QueryClientProvider>
+    <>
+      <button onClick={() => setModalVisible(true)}>Show Confirmation</button>
+      <CheckOutModal isVisible={isModalVisible} onClose={handleModalClose} />
+    </>
   );
 }
 

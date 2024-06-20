@@ -1,10 +1,29 @@
 .checkout {
   padding: 20px;
-  max-width: 400px;
+  max-width: 800px;
+  min-width: 400px;
+  position: relative;
+  /* top: 50px; */
+  max-height: 80%;
+  overflow: hidden;
+  overflow-y: auto; 
   background-color: #161616;
   outline: 1px solid #253769;
   border-radius: 5px;
   
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px; 
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .currency-card {
@@ -62,8 +81,24 @@
   padding: 10px;
   margin: 10px 0px;
   min-width: 20px;
-  background: rgb(72,121,236);
-background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33%, rgba(143,184,180,1) 45%, rgba(179,216,150,1) 64%, rgba(202,237,132,1) 88%);
+  cursor: pointer;
+  background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33%, rgba(143,184,180,1) 45%, rgba(179,216,150,1) 64%, rgba(202,237,132,1) 88%);
+}
+
+.transaction-link {
+  text-align: center;
+  color: white;
+
+}
+
+.transaction-link h2{
+  font-weight: bold;
+}
+
+.button.rounded {
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 12px 25px;
 }
 
 .button.full{
@@ -90,7 +125,6 @@ background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33
   width: 10px;
   height: 10px;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   margin-left: 7px;

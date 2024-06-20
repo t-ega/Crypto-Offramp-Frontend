@@ -35,3 +35,8 @@ export const resolveBank = async (data: AccountDetails) => {
   const url = `${ENDPOINTS.RESOLVE_BANK}?bank_code=${bank_code}&account_number=${account_number}`;
   return await apiRequest.get(url);
 };
+
+export const fetchPayoutStatus = async (public_id: string) => {
+  const url = `${ENDPOINTS.PAYOUT_STATUS}?public_id=${public_id}`;
+  return await apiRequest.get(url);
+};

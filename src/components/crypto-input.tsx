@@ -9,7 +9,7 @@ import {
 import { toast } from "react-toastify";
 
 import { CheckoutDetails } from "../types";
-import { MarketPriceSchema } from "../utils/validation/market-price";
+import { QuotationSchema } from "../utils/validation/market-price";
 import apiRequest from "../utils/api-request";
 
 export interface CryptoProps {
@@ -102,7 +102,7 @@ const CryptoInput = (props: CryptoProps) => {
     const response = quotationQuery?.data;
     if (!response) return;
 
-    const validation = MarketPriceSchema.safeParse(response.data);
+    const validation = QuotationSchema.safeParse(response.data);
 
     if (validation.error) {
       toast.error("😓Could not parse server conversion response");

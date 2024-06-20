@@ -1,14 +1,20 @@
 interface IButtonProps {
   content: any;
   variant?: string;
+  disabled?: boolean;
+  executing?: boolean;
   onClick?: () => void;
 }
 
 const Button = (props: IButtonProps) => {
-  const { content, variant, onClick } = props;
+  const { content, variant, onClick, executing, disabled } = props;
   return (
-    <button className={`button ${variant}`} onClick={onClick}>
-      {content}
+    <button
+      disabled={executing || disabled}
+      className={`button ${variant}`}
+      onClick={onClick}
+    >
+      {executing ? <div className="lds-hourglass"> </div> : content}
     </button>
   );
 };

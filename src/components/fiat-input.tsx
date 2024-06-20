@@ -4,7 +4,7 @@ import { ICheckoutProps } from "../types";
 import { useQuery } from "@tanstack/react-query";
 import { getQuotations } from "../utils/queries";
 import { toast } from "react-toastify";
-import { MarketPriceSchema } from "../utils/validation/market-price";
+import { QuotationSchema } from "../utils/validation/market-price";
 import { z } from "zod";
 
 const FiatInput = (props: ICheckoutProps) => {
@@ -13,7 +13,7 @@ const FiatInput = (props: ICheckoutProps) => {
 
   const handleGetQuotation = () => {
     if (!context?.receive_amount) return;
-    const valid = parseFloat(context?.receive_amount.toString());
+    const valid = parseInt(context?.receive_amount.toString());
 
     if (!valid) {
       toast.error("Please ensure you passed a valid amount");
@@ -43,7 +43,7 @@ const FiatInput = (props: ICheckoutProps) => {
     const response = quotationQuery?.data;
     if (!response) return;
 
-    const validation = MarketPriceSchema.safeParse(response.data);
+    const validation = QuotationSchema.safeParse(response.data);
 
     if (validation.error) {
       toast.error("😓Could not parse server conversion response");

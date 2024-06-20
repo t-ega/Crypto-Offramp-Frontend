@@ -27,6 +27,15 @@ const ConfirmPayment = () => {
             value={context?.account_name}
           />
         </div>
+        <div>
+          <p className="info">Receipient Email</p>
+          <input
+            type="text"
+            className="bank-info"
+            disabled
+            value={context?.receipient_email}
+          />
+        </div>
       </div>
     </div>
   );

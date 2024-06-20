@@ -35,7 +35,7 @@ class ApiRequest {
       return msg;
     }
 
-    e.message;
+    return e.message;
   }
 }
 

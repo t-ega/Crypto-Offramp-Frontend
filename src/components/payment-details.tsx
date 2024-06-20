@@ -80,14 +80,16 @@ const PaymentDetails = (props: ICheckoutProps) => {
                 handleInput(e);
                 resolveBankQuery.refetch();
               }}
-              value={context?.bank_code}
+              value={context?.bank_code || "---"}
               style={{ color: "black", padding: "10px" }}
               className="bank-info"
               id=""
             >
               {banksList &&
-                banksList.map((bank) => (
-                  <option value={bank.code}>{bank.name}</option>
+                banksList.map((bank, idx) => (
+                  <option key={idx} value={bank.code}>
+                    {bank.name}
+                  </option>
                 ))}
             </select>
           </div>
@@ -113,6 +115,17 @@ const PaymentDetails = (props: ICheckoutProps) => {
                 )}
               </div>
             </div>
+          </div>
+          <div>
+            <p className="info">Receipient Email</p>
+            <input
+              name="receipient_email"
+              type="email"
+              required
+              value={context?.receipient_email}
+              onChange={(e) => handleInput(e)}
+              className="bank-info"
+            />
           </div>
           <div>
             <p className="info">Name on account</p>

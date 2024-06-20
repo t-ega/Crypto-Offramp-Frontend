@@ -70,7 +70,6 @@ export const Summary = (props: SummaryProps) => {
             <p className="summary-value">{`${
               processingFee ? `${processingFee}%` : "N/A"
             }`}</p>
-            {/* <p className="summary-sub">($28)</p> */}
           </div>
         </div>
         <hr style={{ borderTop: "dotted 1px", margin: "20px 0px" }} />
@@ -84,7 +83,6 @@ export const Summary = (props: SummaryProps) => {
                 {" "}
                 {NGN.format(context?.receive_amount || 0)}
               </p>
-              {/* <p className="summary-sub">($42)</p> */}
             </div>
           </div>
         </div>

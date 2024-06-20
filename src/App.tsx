@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 import CheckOut from "./components/check-out";
+import ConfirmationModal from "./components/confirm-modal";
 
 const queryClient = new QueryClient();
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ToastContainer />
-      <CheckOut />
+      <ConfirmationModal />
     </QueryClientProvider>
   );
 }

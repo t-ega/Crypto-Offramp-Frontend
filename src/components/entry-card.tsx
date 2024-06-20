@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Sol from "../assets/sol.svg";
 import { CheckoutContext } from "../utils/checkout-content";
-import { CheckoutDetails, ICheckoutProps } from "../types";
+import { ICheckoutProps } from "../types";
 import CryptoInput from "./crypto-input";
 import FiatInput from "./fiat-input";
 

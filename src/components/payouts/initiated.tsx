@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PayoutSummary } from "../payout-summary";
 import Button from "../button";
 import { PayoutDetails } from "../../types";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { fetchPayoutStatus, getQuotations } from "../../utils/queries";
+import { getQuotations } from "../../utils/queries";
 import {
   QuotationSchema,
   QuotationSchemaType,
@@ -126,7 +126,7 @@ const PayoutInitiated = (props: PayoutDataProps) => {
         variant="full"
       />
       <Button
-        executing={payoutMutation.isPending}
+        executing={cancelPayoutMutation.isPending}
         onClick={handleCancelPayout}
         content={"Please, I wish to cancel"}
         variant="outline"

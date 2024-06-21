@@ -129,7 +129,53 @@
   border: 1px solid #253769;
   color: white;
   font-weight: bold;
-  
+}
+
+.popper {
+  display: flex;
+  justify-content: center;
+}
+
+.info-display {
+  border: 1px solid #253769;
+  color: white;
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.info-icon {
+  margin: 3px;
+}
+
+.qr-code {
+  display: flex;
+  justify-content: center;
+}
+
+.address-info{
+  display: flex;
+  border: 1px solid #253769;
+  padding: 10px 20px;
+  align-items: center;
+  margin: 10px;
+}
+
+.address-info__inner {
+  margin: 0px 10px;
+  p {
+    margin: 5px 0;
+  }
+  h3 {
+    margin: 1px;
+  }
+}
+
+.popper__icon {
+  align-items: center;
+  width: 500px;
+  height: 200px;
 }
 .swap {
   display: flex;

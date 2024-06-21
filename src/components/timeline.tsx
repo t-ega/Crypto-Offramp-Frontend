@@ -11,7 +11,7 @@ const Timeline = (props: TimelineProps) => {
   const status_map = new Map();
   status_map.set("deposit_confirmed", 1);
   status_map.set("payout_initiated", 2);
-  status_map.set("payout_confirmed", 3);
+  status_map.set("payout_completed", 3);
 
   const currentStatus = status_map.get(status);
 

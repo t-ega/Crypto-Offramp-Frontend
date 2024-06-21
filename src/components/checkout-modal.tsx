@@ -25,6 +25,14 @@ const CheckOutModal = (props: CheckoutModal) => {
     mutationFn: createPayout,
   });
 
+  const displayErrors = (errors: string[] | string) => {
+    if (Array.isArray(errors)) {
+      errors.map((e) => toast.error(e));
+      return;
+    }
+    toast.error(errors);
+  };
+
   const [currentContext, setCurrentContext] = useState<CheckoutDetails>();
 
   const handleInput = (
@@ -66,7 +74,7 @@ const CheckOutModal = (props: CheckoutModal) => {
     payoutMutation.mutate(validData.data, {
       onError: (err) => {
         const msg = apiRequest.formatApiErrorMessage(err);
-        toast.error(msg);
+        displayErrors(msg);
       },
       onSuccess: (response) => {
         const public_id = response.data.data.public_id;

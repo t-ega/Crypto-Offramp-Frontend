@@ -17,7 +17,6 @@ export const getQuotations = async (data: Quotation) => {
   const quote = quote_type || "send";
   const url = `${ENDPOINTS.MARKETS}?quote_type=${quote}&vol=${rest.vol}&currency=${rest.currency}`;
   const res = await apiRequest.get(url);
-  console.log("Emd res", res.data);
   return res.data;
 };
 

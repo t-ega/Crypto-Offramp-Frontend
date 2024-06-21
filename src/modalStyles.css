@@ -15,10 +15,10 @@
   
   
   .confirm-modal__top {
-    display: flex;
-
+    /* display: flex; */
     justify-content: center;
-
+    align-items: center;
+    align-content: center;
     color: white;
   }
   

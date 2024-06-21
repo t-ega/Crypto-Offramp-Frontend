@@ -72,7 +72,7 @@ const PaymentDetails = (props: ICheckoutProps) => {
       <h2 style={{ color: "white" }}>Payment Details</h2>
       <div>
         <div className="bank-entry">
-          <div>
+          <div className="bank_entry__item">
             <p className="info">Select your bank</p>
             <select
               name="bank_code"
@@ -93,7 +93,7 @@ const PaymentDetails = (props: ICheckoutProps) => {
                 ))}
             </select>
           </div>
-          <div>
+          <div className="bank_entry__item">
             <p className="info">Account Number</p>
             <div className="input-container">
               <input
@@ -116,7 +116,7 @@ const PaymentDetails = (props: ICheckoutProps) => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="bank_entry__item">
             <p className="info">Receipient Email</p>
             <input
               name="receipient_email"
@@ -127,7 +127,7 @@ const PaymentDetails = (props: ICheckoutProps) => {
               className="bank-info"
             />
           </div>
-          <div>
+          <div className="bank_entry__item">
             <p className="info">Name on account</p>
             <input
               type="text"

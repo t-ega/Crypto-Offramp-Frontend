@@ -1,4 +1,4 @@
-import { CheckoutDetails, CheckoutModal, PaymentModalProps } from "../types";
+import { CheckoutDetails, CheckoutModal } from "../types";
 import "../checkout.css";
 import Button from "./button";
 import ConfirmPayment from "./confirm-payment";
@@ -6,17 +6,20 @@ import EntryCard from "./entry-card";
 import PaymentDetails from "./payment-details";
 
 import { Summary } from "./summary";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { PayoutSchema } from "../utils/validation/payout";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { createPayout } from "../utils/mutations";
 import apiRequest from "../utils/api-request";
 import { CheckoutContext } from "../utils/checkout-content";
+import { useNavigate } from "react-router-dom";
+import { ENDPOINTS } from "../utils/endpoints";
 
 const CheckOutModal = (props: CheckoutModal) => {
   const [currentStep, setCurrentStep] = useState(1);
   const { isVisible, onClose } = props;
+  const navigate = useNavigate();
 
   const payoutMutation = useMutation({
     mutationFn: createPayout,
@@ -56,18 +59,18 @@ const CheckOutModal = (props: CheckoutModal) => {
     });
 
     if (validData.error) {
-      console.log(validData.error.errors);
       toast.warning("Please re-check all fields and confirm the input");
       return;
     }
 
-    console.log("data: ", validData.data);
     payoutMutation.mutate(validData.data, {
       onError: (err) => {
         const msg = apiRequest.formatApiErrorMessage(err);
         toast.error(msg);
       },
-      onSuccess: (data) => {
+      onSuccess: (response) => {
+        const public_id = response.data.data.public_id;
+        navigate(ENDPOINTS.FRONTEND.PAYMENT_STATUS(public_id));
         toast.success("Waiting to confirm deposit");
       },
     });
@@ -95,6 +98,8 @@ const CheckOutModal = (props: CheckoutModal) => {
               onClick={() => {
                 if (currentStep > 1) {
                   setCurrentStep((prev) => (prev -= 1));
+                } else {
+                  onClose();
                 }
               }}
               content={
@@ -123,6 +128,7 @@ const CheckOutModal = (props: CheckoutModal) => {
 
               validatePayout();
             }}
+            executing={payoutMutation.isPending}
             variant="full"
           />
           <div

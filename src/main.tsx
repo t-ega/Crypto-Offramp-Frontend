@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import PaymentModal from "./components/payment-modal.tsx";
+import PayoutModal from "./components/payout-modal.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
 
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: "payment/confirm/:public_id",
-    element: <PaymentModal />,
+    element: <PayoutModal />,
   },
 ]);
 

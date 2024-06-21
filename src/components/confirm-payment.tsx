@@ -9,7 +9,7 @@ const ConfirmPayment = () => {
       <h2 className="info">Confirm Transaction</h2>
       <div>
         <h3 className="info">Account Details</h3>
-        <div>
+        <div className="bank_entry__item">
           <p className="info">Account Number</p>
           <input
             type="number"
@@ -18,7 +18,7 @@ const ConfirmPayment = () => {
             value={context?.account_number}
           />
         </div>
-        <div>
+        <div className="bank_entry__item">
           <p className="info">Bank</p>
           <input
             type="text"
@@ -27,7 +27,7 @@ const ConfirmPayment = () => {
             value={context?.account_name}
           />
         </div>
-        <div>
+        <div className="bank_entry__item">
           <p className="info">Receipient Email</p>
           <input
             type="text"

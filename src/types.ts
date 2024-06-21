@@ -17,6 +17,7 @@ export type PayoutDetails = {
   from_currency: string;
   status: string;
   from_amount: number;
+  receipient_email: string;
   account_name: string;
   public_id: string;
 };

@@ -13,17 +13,8 @@
   
 }
 
-.modal-content::-webkit-scrollbar {
-  width: 5px; 
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 10px; 
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.checkout::-webkit-scrollbar {
+  display: none;
 }
 
 .currency-card {
@@ -44,6 +35,27 @@
   margin: 10px 0px;
 }
 
+.awaiting-payment {
+  width: 100%;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  background-color: #242121;
+}
+
+.awaiting-payment__inner {
+  width: 50%;
+  text-align: center;
+  color: white;
+  text-align: center;
+  margin: 10px;
+
+}
+
+.awaiting-payment h3, p{
+  margin: 0;
+}
+
 .currency-card h3 {
   font-weight: bolder;
   margin: 0px 0px;
@@ -61,6 +73,7 @@
 
 .info {
   color: white;
+  margin: 5px 0;
 }
 
 .arrow-back {
@@ -103,10 +116,20 @@
 
 .button.full{
   width: 100%;
-  margin: 20px 0;
+  margin: 15px 0;
   padding: 10px;
   font-weight: bold;
+}
 
+.button.outline {
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px;
+  background: none;
+  border: 1px solid #253769;
+  color: white;
+  font-weight: bold;
+  
 }
 .swap {
   display: flex;
@@ -132,7 +155,7 @@ background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33
   margin-top: 23px;
 }
 
-.amount input{
+.amount-input{
   height: 30px;
   padding: 5px;
   width: 100%;
@@ -147,11 +170,16 @@ background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33
   display: flex;
   justify-content: space-between;
   padding: 2px 0;
+  margin: 10px 0;
 }
 
 .summary-details {
   display: flex;
   align-items: center;
+}
+
+.bank_entry__item{
+  margin: 25px 0;
 }
 
 .summary-value {

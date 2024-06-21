@@ -4,7 +4,6 @@
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
-    /* max-width: 300px; */
 }
 
 
@@ -14,8 +13,7 @@
     margin: 10px;
 }
 .timeline {
-    /* margin: 10px; */
-    /* padding: 10px; */
     display: flex;
-    /* justify-content: center; */
+    border: 1px solid #242121;
+    padding: 15px;
 }

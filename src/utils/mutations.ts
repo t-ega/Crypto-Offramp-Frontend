@@ -8,6 +8,11 @@ export const createPayout = async (data: PayoutPayload) => {
 };
 
 export const markPayoutAsPaid = async (public_id: string) => {
-  const url = ENDPOINTS.MARK_PAID(public_id);
-  return await apiRequest.post(url, null);
+  const url = ENDPOINTS.UPDATE_PAYOUT_STATUS(public_id);
+  return await apiRequest.post(url, { status: "initiate_deposit" });
+};
+
+export const cancelPayout = async (public_id: string) => {
+  const url = ENDPOINTS.UPDATE_PAYOUT_STATUS(public_id);
+  return await apiRequest.post(url, { status: "fail_transaction" });
 };

@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
 import "../timeline.css";
 
 interface TimelineProps {
   status: string;
+  receipient_email: string;
 }
 
 const Timeline = (props: TimelineProps) => {
-  const { status } = props;
-  const [currentStatusIndex, setCurrentStatusIndex] = useState(1);
+  const { status, receipient_email } = props;
 
   const status_map = new Map();
-  status_map.set("deposit_initiated", 1);
+  status_map.set("deposit_confirmed", 1);
   status_map.set("payout_initiated", 2);
   status_map.set("payout_confirmed", 3);
 
@@ -20,11 +19,6 @@ const Timeline = (props: TimelineProps) => {
     "https://img.icons8.com/?size=20&id=123575&format=png&color=213058";
   const emptyIcon =
     "https://img.icons8.com/?size=20&id=XXgza4GSPO7W&format=png&color=213058";
-
-  useEffect(() => {
-    const index = status_map.get(status);
-    setCurrentStatusIndex(index);
-  }, []);
 
   return (
     <div className="timeline">
@@ -39,7 +33,9 @@ const Timeline = (props: TimelineProps) => {
         </div>
         <div className="timeline_item">
           <img src={currentStatus >= 3 ? filledIcon : emptyIcon} alt="" />
-          <p>Your money has been successfuly deposited to Tega Akpos🎊</p>
+          <p>
+            Your money has been successfuly deposited to {receipient_email}🎊
+          </p>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export const Summary = (props: SummaryProps) => {
   }
 
   return (
-    <div>
+    <div style={{ margin: "20px 0" }}>
       <p style={{ color: "white" }}>Summary</p>
       <div className="summary">
         <div className="summary-content">
@@ -60,7 +60,7 @@ export const Summary = (props: SummaryProps) => {
                 <p className="summary-sub">⚡</p>
               </>
             ) : (
-              "N/A"
+              <p className="summary-value">N/A</p>
             )}
           </div>
         </div>

@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { CheckoutContext } from "../utils/checkout-content";
-import { ICheckoutProps } from "../types";
+import { CheckoutContext } from "../../../utils/checkout-content";
+import { ICheckoutProps } from "../../../types";
 import { useQueries } from "@tanstack/react-query";
-import { listBanks, resolveBank } from "../utils/queries";
-import { BanksSchema, BankType } from "../utils/validation/banks";
+import { listBanks, resolveBank } from "../../../utils/queries";
+import { BanksSchema, BankType } from "../../../utils/validation/banks";
 import { toast } from "react-toastify";
-import apiRequest from "../utils/api-request";
+import apiRequest from "../../../utils/api-request";
 
 const PaymentDetails = (props: ICheckoutProps) => {
   const context = useContext(CheckoutContext);

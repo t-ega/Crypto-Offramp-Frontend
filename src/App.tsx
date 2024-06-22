@@ -2,7 +2,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 import "./modalStyles.css"; // Ensure to import the CSS styles
-import CheckOutModal from "./components/checkout-modal";
+import CheckOutModal from "./components/screens/checkout/checkout-modal";
 import { useState } from "react";
 
 function App() {

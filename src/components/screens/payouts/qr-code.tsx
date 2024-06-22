@@ -1,5 +1,5 @@
 import QRCode from "react-qr-code";
-import Button from "./button";
+import Button from "../../button";
 import { toast } from "react-toastify";
 
 type QrCodeProps = {

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { PayoutSummary } from "../payout-summary";
-import Button from "../button";
-import { PayoutDetails } from "../../types";
+import Button from "../../../button";
+import { PayoutDetails } from "../../../../types";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getQuotations } from "../../utils/queries";
+import { getQuotations } from "../../../../utils/queries";
 import {
   QuotationSchema,
   QuotationSchemaType,
-} from "../../utils/validation/market-price";
+} from "../../../../utils/validation/market-price";
 import { toast } from "react-toastify";
-import { cancelPayout, markPayoutAsPaid } from "../../utils/mutations";
-import apiRequest from "../../utils/api-request";
+import { cancelPayout, markPayoutAsPaid } from "../../../../utils/mutations";
+import apiRequest from "../../../../utils/api-request";
 import { useNavigate } from "react-router-dom";
 import SpinningCoin from "../spinning-coin";
 import QrCodeDisplay from "../qr-code";

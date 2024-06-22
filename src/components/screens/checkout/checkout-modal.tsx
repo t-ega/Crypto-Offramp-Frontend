@@ -1,20 +1,20 @@
-import { CheckoutDetails, CheckoutModal } from "../types";
+import { CheckoutDetails, CheckoutModal } from "../../../types";
 import "../checkout.css";
-import Button from "./button";
-import ConfirmPayment from "./confirm-payment";
+import Button from "../../button";
+import ConfirmPayment from "../../confirm-payment";
 import EntryCard from "./entry-card";
 import PaymentDetails from "./payment-details";
 
-import { Summary } from "./summary";
+import { Summary } from "../../summary";
 import React, { useState } from "react";
-import { PayoutSchema } from "../utils/validation/payout";
+import { PayoutSchema } from "../../../utils/validation/payout";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
-import { createPayout } from "../utils/mutations";
-import apiRequest from "../utils/api-request";
-import { CheckoutContext } from "../utils/checkout-content";
+import { createPayout } from "../../../utils/mutations";
+import apiRequest from "../../../utils/api-request";
+import { CheckoutContext } from "../../../utils/checkout-content";
 import { useNavigate } from "react-router-dom";
-import { ENDPOINTS } from "../utils/endpoints";
+import { ENDPOINTS } from "../../../utils/endpoints";
 
 const CheckOutModal = (props: CheckoutModal) => {
   const [currentStep, setCurrentStep] = useState(1);

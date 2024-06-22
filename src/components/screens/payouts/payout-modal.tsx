@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
-import { PayoutDetails } from "../types";
+import { PayoutDetails } from "../../../types";
 import "../orderStyle.css";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPayoutStatus } from "../utils/queries";
+import { fetchPayoutStatus } from "../../../utils/queries";
 import { useParams } from "react-router-dom";
-import NotFound from "./404";
+import NotFound from "../../404";
 import SuccessCard from "./success-card";
 import FailedCard from "./failed-card";
-import PayoutInitiated from "./payouts/initiated";
-import Awaiting from "./payouts/awaiting";
-import { getNotificationMessage } from "../utils/notification-messages";
-import { PAYOUT_STATUS } from "../utils/payout-status";
-import PayoutStatusSkeleton from "./payouts/skeleton";
+import PayoutInitiated from "./payout-status/initiated";
+import Awaiting from "./payout-status/awaiting";
+import { getNotificationMessage } from "../../../utils/notification-messages";
+import { PAYOUT_STATUS } from "../../../utils/payout-status";
+import PayoutStatusSkeleton from "./payout-status/skeleton";
 import { SkeletonTheme } from "react-loading-skeleton";
 
 const PayoutModal = () => {

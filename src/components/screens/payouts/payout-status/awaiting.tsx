@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
 import Button from "../button";
-import Timeline from "../timeline";
+import Timeline from "./timeline";
 import { PayoutDataProps } from "./initiated";
-import SpinningCoin from "../spinning-coin";
+import SpinningCoin from "./spinning-coin";
 
 const Awaiting = (props: PayoutDataProps) => {
   const { payoutData } = props;

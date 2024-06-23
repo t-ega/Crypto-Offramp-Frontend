@@ -5,11 +5,11 @@
   position: relative;
   max-height: 80%;
   overflow: hidden;
-  overflow-y: auto; 
+  overflow-y: auto;
   background-color: #161616;
   outline: 1px solid #253769;
   border-radius: 5px;
-  
+
 }
 
 .checkout::-webkit-scrollbar {
@@ -25,12 +25,12 @@
   color: white;
 }
 
-.button:hover{
+.button:hover {
   cursor: pointer;
 }
 
 .currency-card h2 {
- font-weight:900;
+  font-weight: 900;
   margin: 10px 0px;
 }
 
@@ -51,7 +51,8 @@
 
 }
 
-.awaiting-payment h3, p{
+.awaiting-payment h3,
+p {
   margin: 0;
 }
 
@@ -66,6 +67,7 @@
 
 .logo {
   height: 30px;
+  cursor: pointer;
   width: 30px;
   margin: 5px
 }
@@ -95,20 +97,42 @@
   color: white;
   min-width: 20px;
   cursor: pointer;
-  background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33%, rgba(143,184,180,1) 45%, rgba(179,216,150,1) 64%, rgba(202,237,132,1) 88%);
+  background: linear-gradient(90deg, rgba(72, 121, 236, 1) 0%, rgba(123, 166, 196, 1) 33%, rgba(143, 184, 180, 1) 45%, rgba(179, 216, 150, 1) 64%, rgba(202, 237, 132, 1) 88%);
 }
+
 .button.large {
-  font-size: large;
+  font-size: 1rem;
   padding: 15px 10px;
-  
 }
+
+.button.special {
+  font-size: 1rem;
+  padding: 15px 10px;
+  background: white;
+}
+
+.special_inner {
+  background: -webkit-linear-gradient(360deg,
+      rgba(72, 121, 236, 1) 0%,
+      rgba(123, 166, 196, 1) 33%,
+      rgba(143, 184, 180, 1) 45%,
+      rgba(179, 216, 150, 1) 64%,
+      rgba(202, 237, 132, 1) 88%,
+      rgba(205, 251, 190, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  font-size: large;
+  padding: 0 20px;
+}
+
 .transaction-link {
   text-align: center;
   color: white;
 
 }
 
-.transaction-link h2{
+.transaction-link h2 {
   font-weight: bold;
 }
 
@@ -118,7 +142,7 @@
   padding: 12px 25px;
 }
 
-.button.full{
+.button.full {
   width: 100%;
   margin: 15px 0;
   font-size: x-large;
@@ -159,7 +183,7 @@
   justify-content: center;
 }
 
-.address-info{
+.address-info {
   display: flex;
   border: 1px solid #253769;
   padding: 10px 20px;
@@ -169,9 +193,11 @@
 
 .address-info__inner {
   margin: 0px 10px;
+
   p {
     margin: 5px 0;
   }
+
   h3 {
     margin: 1px;
   }
@@ -182,21 +208,26 @@
   width: 500px;
   height: 200px;
 }
+
 .swap {
   display: flex;
   justify-content: center;
 }
 
+.contents {
+  padding: 0px 40px;
+  font-size: 100;
+}
+
 body {
   background-color: #161616;
+  margin: 0;
   font-family: "Exo 2", sans-serif;
-  font-size: 100;
-  padding: 0px 40px;
 }
 
 .swap-icon {
-  background: rgb(72,121,236);
-background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33%, rgba(143,184,180,1) 45%, rgba(179,216,150,1) 64%, rgba(202,237,132,1) 88%);
+  background: rgb(72, 121, 236);
+  background: linear-gradient(90deg, rgba(72, 121, 236, 1) 0%, rgba(123, 166, 196, 1) 33%, rgba(143, 184, 180, 1) 45%, rgba(179, 216, 150, 1) 64%, rgba(202, 237, 132, 1) 88%);
   border-radius: 20px;
   padding: 10px;
   width: 10px;
@@ -209,7 +240,7 @@ background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33
   margin-top: 23px;
 }
 
-.amount-input{
+.amount-input {
   height: 30px;
   padding: 5px;
   width: 100%;
@@ -232,7 +263,7 @@ background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33
   align-items: center;
 }
 
-.bank_entry__item{
+.bank_entry__item {
   margin: 25px 0;
 }
 
@@ -245,7 +276,7 @@ background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33
   color: gray;
 }
 
-.summary-sub{
+.summary-sub {
   color: gray;
   /* margin: 10px; */
 }

@@ -1,22 +1,28 @@
 import Logo from "./logo";
 import "../../../header.css";
 import Button from "../../button";
+import { LandingProps } from "./landing";
 
-const Header = () => {
+const Header = (props: LandingProps) => {
+  const { openModal } = props;
+
   return (
     <div className="header">
       <div>
         <Logo />
       </div>
-      <div className="">
-        <ul className="header_links">
-          <li className="link-item">Home</li>
-          <li className="link-item">Buy Crypto</li>
-          <li className="link-item">Sell Crypto</li>
-          <li className="link-item">Swap</li>
-        </ul>
+      <div className="nav-bar" id="navigation-bar">
+        <a href="" className="link-item">
+          Home
+        </a>
+        <a href="#get-started" className="link-item">
+          Buy Crypto
+        </a>
+        <a href="#faq" className="link-item">
+          FAQ
+        </a>
       </div>
-      <Button content={"Get Started"} variant="large" />
+      <Button content={"Get Started"} onClick={openModal} variant="large" />
     </div>
   );
 };

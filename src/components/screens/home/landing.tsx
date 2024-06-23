@@ -1,6 +1,8 @@
 import "../../../landing.css";
 import Hero from "./hero";
 import Profile from "../../../assets/vecteezy_3d-rendering-blue-and-yellow-color-user-icon-isolated_9592988.png";
+import { FAQS } from "../../../utils/faq";
+import Accordion from "./accordion";
 
 export interface LandingProps {
   openModal: () => void;
@@ -8,20 +10,12 @@ export interface LandingProps {
 
 const Landing = (props: LandingProps) => {
   const { openModal } = props;
+
   return (
     <div>
       <Hero openModal={openModal} />
-      <section className="section">
-        <h2
-          className=""
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            color: "white",
-          }}
-        >
-          How to get started on TheCryptoRamp
-        </h2>
+      <section className="section" id="get-started">
+        <h1 className="heading_medium">How to get started on TheCryptoRamp</h1>
         <div className="steps">
           <div className="step-item">
             <img src={Profile} style={{ width: "40px", objectFit: "cover" }} />
@@ -61,6 +55,16 @@ const Landing = (props: LandingProps) => {
               Once a deposit is confirmed you would receive an instant payout to
               the bank account you kept in the previous step.
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="section" id="faq">
+        <div>
+          <h1 className="heading_medium">Have Questions?</h1>
+          <div className="accordion_container">
+            {FAQS.map(({ title, content }, idx) => (
+              <Accordion title={title} content={content} key={idx} />
+            ))}
           </div>
         </div>
       </section>

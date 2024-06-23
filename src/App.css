@@ -3,7 +3,6 @@
   max-width: 800px;
   min-width: 400px;
   position: relative;
-  /* top: 50px; */
   max-height: 80%;
   overflow: hidden;
   overflow-y: auto; 
@@ -89,15 +88,20 @@
 }
 
 .button {
-  border-radius: 5px;
+  border-radius: 7px;
   border: none;
   padding: 10px;
   margin: 10px 0px;
+  color: white;
   min-width: 20px;
   cursor: pointer;
   background: linear-gradient(90deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33%, rgba(143,184,180,1) 45%, rgba(179,216,150,1) 64%, rgba(202,237,132,1) 88%);
 }
-
+.button.large {
+  font-size: large;
+  padding: 15px 10px;
+  
+}
 .transaction-link {
   text-align: center;
   color: white;
@@ -117,8 +121,9 @@
 .button.full{
   width: 100%;
   margin: 15px 0;
+  font-size: x-large;
   padding: 10px;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .button.outline {
@@ -183,7 +188,10 @@
 }
 
 body {
-  background-color: #161616
+  background-color: #161616;
+  font-family: "Exo 2", sans-serif;
+  font-size: 100;
+  padding: 0px 40px;
 }
 
 .swap-icon {

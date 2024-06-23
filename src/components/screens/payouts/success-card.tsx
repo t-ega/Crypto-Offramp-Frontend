@@ -1,4 +1,4 @@
-import PartyPopper from "../assets/party-popper-svgrepo-com.svg";
+import PartyPopper from "../../../assets/party-popper-svgrepo-com.svg";
 import Timeline from "./timeline";
 
 interface SuccessCardProps {

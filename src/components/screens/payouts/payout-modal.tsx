@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { PayoutDetails } from "../../../types";
-import "../orderStyle.css";
+import "../../../orderStyle.css";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPayoutStatus } from "../../../utils/queries";
 import { useParams } from "react-router-dom";

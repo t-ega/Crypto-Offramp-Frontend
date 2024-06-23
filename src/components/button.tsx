@@ -1,6 +1,6 @@
 interface IButtonProps {
   content: any;
-  variant?: "full" | "rounded" | "outline";
+  variant?: "full" | "rounded" | "outline" | "large";
   disabled?: boolean;
   executing?: boolean;
   onClick?: () => void;

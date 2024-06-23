@@ -1,4 +1,4 @@
-import { PayoutDetails } from "../types";
+import { PayoutDetails } from "../../../types";
 
 export interface PayoutSummaryProps extends Partial<PayoutDetails> {
   amountToReceive: number;

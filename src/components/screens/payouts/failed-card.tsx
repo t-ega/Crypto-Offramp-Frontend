@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import SadSvg from "../assets/sad-svgrepo-com.svg";
+import SadSvg from "../../../assets/sad-svgrepo-com.svg";
 import { useEffect, useState } from "react";
 
 const FailedCard = () => {

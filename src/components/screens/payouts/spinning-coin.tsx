@@ -1,4 +1,4 @@
-import "../spinningCoin.css";
+import "../../../spinningCoin.css";
 
 const SpinningCoin = () => {
   return (

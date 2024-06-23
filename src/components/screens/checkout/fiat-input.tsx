@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { CheckoutContext } from "../utils/checkout-content";
-import { ICheckoutProps } from "../types";
+import { useContext, useEffect } from "react";
+import { CheckoutContext } from "../../../utils/checkout-content";
+import { ICheckoutProps } from "../../../types";
 import { useQuery } from "@tanstack/react-query";
-import { getQuotations } from "../utils/queries";
+import { getQuotations } from "../../../utils/queries";
 import { toast } from "react-toastify";
-import { QuotationSchema } from "../utils/validation/market-price";
+import { QuotationSchema } from "../../../utils/validation/market-price";
 import { z } from "zod";
 
 const FiatInput = (props: ICheckoutProps) => {

@@ -4,6 +4,8 @@ import "./App.css";
 import "./modalStyles.css"; // Ensure to import the CSS styles
 import CheckOutModal from "./components/screens/checkout/checkout-modal";
 import { useState } from "react";
+import Landing from "./components/screens/home/landing";
+import Header from "./components/screens/home/header";
 
 function App() {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -13,8 +15,9 @@ function App() {
   };
   return (
     <>
-      <button onClick={() => setModalVisible(true)}>Show Confirmation</button>
+      <Header />
       <CheckOutModal isVisible={isModalVisible} onClose={handleModalClose} />
+      <Landing openModal={() => setModalVisible(true)} />
     </>
   );
 }

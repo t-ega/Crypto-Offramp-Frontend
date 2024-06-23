@@ -1,11 +1,11 @@
 import { CheckoutDetails, CheckoutModal } from "../../../types";
-import "../checkout.css";
+import "../../../checkout.css";
 import Button from "../../button";
-import ConfirmPayment from "../../confirm-payment";
+import ConfirmPayment from "../checkout/confirm-payment";
 import EntryCard from "./entry-card";
 import PaymentDetails from "./payment-details";
 
-import { Summary } from "../../summary";
+import { Summary } from "../checkout/summary";
 import React, { useState } from "react";
 import { PayoutSchema } from "../../../utils/validation/payout";
 import { toast } from "react-toastify";

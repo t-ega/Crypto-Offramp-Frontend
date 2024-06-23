@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CheckoutContext } from "../utils/checkout-content";
+import { CheckoutContext } from "../../../utils/checkout-content";
 import { useQueries } from "@tanstack/react-query";
-import { fetchCryptoCurrencies, getQuotations } from "../utils/queries";
+import { fetchCryptoCurrencies, getQuotations } from "../../../utils/queries";
 import {
   CurrencyListSchema,
   CurrencyType,
-} from "../utils/validation/currency-list";
+} from "../../../utils/validation/currency-list";
 import { toast } from "react-toastify";
 
-import { CheckoutDetails } from "../types";
-import { QuotationSchema } from "../utils/validation/market-price";
-import apiRequest from "../utils/api-request";
+import { CheckoutDetails } from "../../../types";
+import { QuotationSchema } from "../../../utils/validation/market-price";
+import apiRequest from "../../../utils/api-request";
 
 export interface CryptoProps {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -59,6 +59,7 @@ const CryptoInput = (props: CryptoProps) => {
         queryFn: () => fetchCryptoCurrencies(),
         staleTime: 1000 * 60 * 60 * 24,
         refetchOnMount: false,
+        refetchOnWindowFocus: false,
       },
       {
         queryKey: ["quotationCrypto", context?.from_currency],

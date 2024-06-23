@@ -1,0 +1,34 @@
+.header_links {
+    display: flex;
+    /* background-color: red; */
+    justify-content: space-around;
+    row-gap: 400px;
+    color: white;
+    font-size: large;
+    width: 700px;
+    list-style-type: none;
+}
+
+.logo {
+    font-size: 30px; 
+    width: 100%;
+    font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+    height: 100%;
+    background: -webkit-linear-gradient(360deg, rgba(72,121,236,1) 0%, rgba(123,166,196,1) 33%, rgba(143,184,180,1) 45%, rgba(179,216,150,1) 64%, rgba(202,237,132,1) 88%, rgba(205, 251, 190, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+.link-item {
+    margin:10px;
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

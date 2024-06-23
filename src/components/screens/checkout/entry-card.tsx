@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Sol from "../assets/sol.svg";
+import Sol from "../../../assets/sol.svg";
 import { CheckoutContext } from "../../../utils/checkout-content";
 import { ICheckoutProps } from "../../../types";
 import CryptoInput from "./crypto-input";
@@ -27,16 +27,23 @@ const EntryCard = (props: ICheckoutProps) => {
             alignItems: "center",
           }}
         >
-          <div className="logo">
-            <img src={Sol} />
-          </div>
+          {/* <div className="log"> */}
+          <img
+            src={
+              "https://img.icons8.com/?size=100&id=tL4HcqvaoJn7&format=png&color=000000"
+            }
+            style={{ width: "50px", margin: "0 10px" }}
+          />
+          {/* </div> */}
           <div>
             <h2>
-              {capitalizeFirstLetter(context?.crypto_display_name || "N/A")}
+              {capitalizeFirstLetter(
+                context?.crypto_display_name || "Select a currency"
+              )}
             </h2>
+            <h3>{NGN.format(context?.currency_price || 0)}</h3>
           </div>
         </div>
-        <h3>{NGN.format(context?.currency_price || 0)}</h3>
       </div>
 
       <CryptoInput handleInput={handleInput} setData={setData!} />

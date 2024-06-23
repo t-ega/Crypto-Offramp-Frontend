@@ -1,4 +1,4 @@
-import "../timeline.css";
+import "../../../timeline.css";
 
 interface TimelineProps {
   status: string;

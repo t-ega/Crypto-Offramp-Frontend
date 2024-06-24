@@ -5,7 +5,6 @@ import "./modalStyles.css"; // Ensure to import the CSS styles
 import CheckOutModal from "./components/screens/checkout/checkout-modal";
 import { useState } from "react";
 import Landing from "./components/screens/home/landing";
-import Header from "./components/screens/home/header";
 import Button from "./components/button";
 import DollarCoin from "./assets/dollar-coin.png";
 
@@ -19,7 +18,6 @@ function App() {
   return (
     <>
       <div className="contents">
-        <Header openModal={() => setModalVisible(true)} />
         <CheckOutModal isVisible={isModalVisible} onClose={handleModalClose} />
         <Landing openModal={() => setModalVisible(true)} />
       </div>

@@ -78,7 +78,7 @@ const PaymentDetails = (props: ICheckoutProps) => {
               name="bank_code"
               onChange={(e) => {
                 handleInput(e);
-                resolveBankQuery.refetch();
+                context?.account_number && resolveBankQuery.refetch();
               }}
               value={context?.bank_code || "---"}
               style={{ color: "black", padding: "10px" }}
@@ -100,7 +100,7 @@ const PaymentDetails = (props: ICheckoutProps) => {
                 type="number"
                 name="account_number"
                 className="bank-info"
-                value={context?.account_number}
+                value={context?.account_number || ""}
                 onChange={(e) => handleInput(e)}
                 onBlur={() => {
                   if (context?.account_number) {

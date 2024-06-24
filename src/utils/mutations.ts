@@ -14,5 +14,18 @@ export const markPayoutAsPaid = async (public_id: string) => {
 
 export const cancelPayout = async (public_id: string) => {
   const url = ENDPOINTS.UPDATE_PAYOUT_STATUS(public_id);
-  return await apiRequest.post(url, { status: "fail_transaction" });
+  return await apiRequest.post(url, { status: "cancel" });
+};
+
+interface AuthPayload {
+  email: string;
+  password: string;
+}
+
+export const signIn = async (data: AuthPayload) => {
+  return await apiRequest.post(ENDPOINTS.SIGN_IN, data);
+};
+
+export const signUp = async (data: AuthPayload) => {
+  return await apiRequest.post(ENDPOINTS.SIGN_UP, data);
 };

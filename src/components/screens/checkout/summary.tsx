@@ -67,9 +67,9 @@ export const Summary = (props: SummaryProps) => {
         <div className="summary-content">
           <p className="summary-head">Processing Fee</p>
           <div className="summary-details">
-            <p className="summary-value">{`${
-              processingFee ? `${processingFee}%` : "N/A"
-            }`}</p>
+            <p className="summary-value">
+              {NGN.format(context?.processing_fee || 0)}
+            </p>
           </div>
         </div>
         <hr style={{ borderTop: "dotted 1px", margin: "20px 0px" }} />

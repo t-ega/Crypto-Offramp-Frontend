@@ -14,6 +14,7 @@ import apiRequest from "../../../../utils/api-request";
 import { useNavigate } from "react-router-dom";
 import SpinningCoin from "../spinning-coin";
 import QrCodeDisplay from "../qr-code";
+import Skeleton from "react-loading-skeleton";
 
 export interface PayoutDataProps {
   payoutData?: PayoutDetails;
@@ -100,6 +101,7 @@ const PayoutInitiated = (props: PayoutDataProps) => {
       <div>
         <SpinningCoin />
       </div>
+
       <PayoutSummary
         from_amount={payoutData?.from_amount || 0}
         public_id={payoutData?.public_id!}
@@ -108,7 +110,15 @@ const PayoutInitiated = (props: PayoutDataProps) => {
         from_currency={payoutData?.from_currency || "N/A"}
       />
 
-      <QrCodeDisplay data={payoutData?.payment_address || "pending"} />
+      {payoutData?.payment_address ? (
+        <QrCodeDisplay data={payoutData?.payment_address} />
+      ) : (
+        <Skeleton
+          width={"100%"}
+          height={"300px"}
+          style={{ margin: "20px 0" }}
+        />
+      )}
 
       <div className="info-display">
         <img

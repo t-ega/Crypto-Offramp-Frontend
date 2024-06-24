@@ -7,7 +7,7 @@ const FailedCard = () => {
   const [timeLeft, setTimeLeft] = useState(0);
 
   const redirect = () => {
-    setTimeLeft(10);
+    setTimeLeft(60);
     return setTimeout(() => {
       navigate("/");
     }, 10000);

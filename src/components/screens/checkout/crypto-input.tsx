@@ -111,6 +111,8 @@ const CryptoInput = (props: CryptoProps) => {
     }
     const validatedData = validation.data;
 
+    console.log("VALIDATED THA", validatedData);
+
     setData({
       receive_amount: validatedData.amountToReceive,
       processing_fee: validatedData.serviceCharge,

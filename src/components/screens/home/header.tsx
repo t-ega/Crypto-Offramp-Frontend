@@ -4,7 +4,11 @@ import Button from "../../button";
 import { LandingProps } from "./landing";
 
 const Header = (props: LandingProps) => {
-  const { openModal } = props;
+  const { openModal, openLoginModal } = props;
+  const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
 
   return (
     <div className="header">
@@ -21,8 +25,15 @@ const Header = (props: LandingProps) => {
         <a href="#faq" className="link-item">
           FAQ
         </a>
+        <a href="#faq" className="link-item">
+          Transactions
+        </a>
       </div>
-      <Button content={"Get Started"} onClick={openModal} variant="large" />
+      {token ? (
+        <Button content={"Convert"} onClick={openModal} variant="large" />
+      ) : (
+        <Button content={"Login"} onClick={openLoginModal} variant="large" />
+      )}
     </div>
   );
 };

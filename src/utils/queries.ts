@@ -39,3 +39,7 @@ export const fetchPayoutStatus = async (public_id: string) => {
   const url = `${ENDPOINTS.PAYOUT_STATUS}?public_id=${public_id}`;
   return await apiRequest.get(url);
 };
+
+export const fetchTransactionHistory = async () => {
+  return await apiRequest.get(ENDPOINTS.TRANSACTION_HISTORY);
+};

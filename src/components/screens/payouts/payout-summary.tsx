@@ -1,3 +1,4 @@
+import Skeleton from "react-loading-skeleton";
 import { PayoutDetails } from "../../../types";
 
 export interface PayoutSummaryProps extends Partial<PayoutDetails> {
@@ -26,7 +27,9 @@ export const PayoutSummary = (data: PayoutSummaryProps) => {
         <div className="summary-content">
           <p className="summary-head">Payment Address: </p>
           <div className="summary-details">
-            <p className="summary-value">{data.payment_address}</p>
+            <p className="summary-value">
+              {data.payment_address || <Skeleton width={"90px"} />}
+            </p>
           </div>
         </div>
         <div className="summary-content">
@@ -38,7 +41,13 @@ export const PayoutSummary = (data: PayoutSummaryProps) => {
         <div className="summary-content">
           <p className="summary-head">You would receive (Subject to change)</p>
           <div className="summary-details">
-            <p className="summary-value">{NGN.format(data?.amountToReceive)}</p>
+            <p className="summary-value">
+              {data.amountToReceive ? (
+                NGN.format(data?.amountToReceive)
+              ) : (
+                <Skeleton width={"90px"} />
+              )}
+            </p>
           </div>
         </div>
 
@@ -50,7 +59,11 @@ export const PayoutSummary = (data: PayoutSummaryProps) => {
             </p>
             <div className="summary-details">
               <p className="summary-total">
-                {NGN.format(data.amountToReceive!)}
+                {data.amountToReceive ? (
+                  NGN.format(data.amountToReceive)
+                ) : (
+                  <Skeleton width={"90px"} />
+                )}
               </p>
             </div>
           </div>

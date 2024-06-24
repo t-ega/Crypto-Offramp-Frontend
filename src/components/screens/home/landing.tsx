@@ -6,6 +6,7 @@ import Accordion from "./accordion";
 
 export interface LandingProps {
   openModal: () => void;
+  openLoginModal?: () => void;
 }
 
 const Landing = (props: LandingProps) => {

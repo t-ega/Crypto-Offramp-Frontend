@@ -25,9 +25,11 @@ const Header = (props: LandingProps) => {
         <a href="#faq" className="link-item">
           FAQ
         </a>
-        <a href="#faq" className="link-item">
-          Transactions
-        </a>
+        {token && (
+          <a href="/transactions" className="link-item">
+            Transactions
+          </a>
+        )}
       </div>
       {token ? (
         <Button content={"Convert"} onClick={openModal} variant="large" />

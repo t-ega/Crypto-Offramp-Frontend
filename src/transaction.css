@@ -1,4 +1,4 @@
-section {
+.transaction_section {
     width: 90%;
     max-width: 800px;
     margin-left: auto;
@@ -9,16 +9,14 @@ section {
     }
 }
 
-h2 {
-    &+* {
-        margin-top: 1.5em;
-    }
+.w-50 {
+    width: 100%
 }
 
 
 
-summary {
-    background-color: #fff;
+.transaction_summary {
+    background-color: #202020;
     position: relative;
     cursor: pointer;
     padding: 1em .5em;
@@ -30,7 +28,7 @@ summary {
     }
 
     &:hover {
-        background-color: #f2f5f9;
+        background-color: #444;
     }
 
 
@@ -84,8 +82,9 @@ summary {
     }
 }
 
-details {
-    background-color: white;
+.transaction_details {
+    background-color: #202020;
+    color: white;
     border-bottom: 1px solid #b5bfd9;
     margin: 20px;
     border-top: 1px solid #b5bfd9;

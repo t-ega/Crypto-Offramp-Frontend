@@ -16,7 +16,7 @@ const Header = (props: LandingProps) => {
         <Logo />
       </div>
       <div className="nav-bar" id="navigation-bar">
-        <a href="" className="link-item">
+        <a href="/" className="link-item">
           Home
         </a>
         <a href="#get-started" className="link-item">

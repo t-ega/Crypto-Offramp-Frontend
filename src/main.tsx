@@ -10,7 +10,6 @@ import { ToastContainer } from "react-toastify";
 import Layout from "./components/screens/layout.tsx";
 import { Signup } from "./components/screens/auth/sign-up.tsx";
 import History from "./components/screens/transactions/history.tsx";
-import TransactionNotFound from "./components/transaction-notfound.tsx";
 import NotFound from "./pages/404.tsx";
 import ErrorBoundary from "./pages/error-boundary.tsx";
 

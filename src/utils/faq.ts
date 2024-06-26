@@ -16,7 +16,7 @@ export const FAQS = [
       "We are really trying to be robust. We currently offer a 20 minutes window where you must complete the transaction otherwise it would be marked as cancelled.",
   },
   {
-    title: "How is the finaly value of my money calculated?",
+    title: "How is the final value of my money calculated?",
     content:
       "When we have confirmed a deposit, immediately we estimate the amount you are to receive then a payout gets initiated. We do this to avoid losses due to the volatile nature of crypto",
   },

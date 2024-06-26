@@ -62,6 +62,10 @@
         display: block;
     }
 
+    .header {
+        margin: 0px;
+    }
+
     .nav-bar a {
         display: block;
     }

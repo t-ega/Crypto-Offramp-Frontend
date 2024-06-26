@@ -47,6 +47,7 @@ const FiatInput = (props: ICheckoutProps) => {
 
     if (validation.error) {
       toast.error("😓Could not parse server conversion response");
+      console.log(validation.error.errors);
       return;
     }
     const validatedData = validation.data;

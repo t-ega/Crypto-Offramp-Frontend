@@ -24,14 +24,11 @@ const CryptoInput = (props: CryptoProps) => {
 
   const [cryptocurrencies, setCryptocurrencies] = useState<CurrencyType[]>([]);
 
-  const [selectedCrypto, setSelectedCrypto] = useState<CurrencyType>();
-
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
   };
 
   const handleCryptoSelect = (crypto: CurrencyType) => {
-    setSelectedCrypto(crypto);
     setData({
       from_currency: crypto.currency,
       crypto_name: crypto.shortName,
@@ -111,23 +108,12 @@ const CryptoInput = (props: CryptoProps) => {
     }
     const validatedData = validation.data;
 
-    console.log("VALIDATED THA", validatedData);
-
     setData({
       receive_amount: validatedData.amountToReceive,
       processing_fee: validatedData.serviceCharge,
       currency_price: validatedData.marketPrice,
     });
   }, [quotationQuery.data]);
-
-  if (currenciesQuery.error) {
-    toast.error("Unable to fetch currencies", { toastId: "3" });
-  }
-
-  if (quotationQuery.error) {
-    const msg = apiRequest.formatApiErrorMessage(quotationQuery.error);
-    toast.error(msg, { toastId: 1 });
-  }
 
   useEffect(() => {
     if (currenciesQuery.error) {

@@ -36,8 +36,8 @@ const History = () => {
           Latest Transactions
         </h1>
         {transactionHistory?.length ? (
-          transactionHistory.map((transaction) => (
-            <details className="transaction_details">
+          transactionHistory.map((transaction, idx) => (
+            <details key={idx} className="transaction_details">
               <summary className="transaction_summary">
                 <div>
                   <img

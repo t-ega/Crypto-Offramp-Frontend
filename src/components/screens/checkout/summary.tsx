@@ -1,13 +1,7 @@
 import { useContext } from "react";
 import { CheckoutContext } from "../../../utils/checkout-content";
 
-export interface SummaryProps {
-  amount?: number;
-  processingFee?: number;
-}
-
-export const Summary = (props: SummaryProps) => {
-  const { processingFee } = props;
+export const Summary = () => {
   const context = useContext(CheckoutContext);
   let NGN = new Intl.NumberFormat("en-US", {
     style: "currency",

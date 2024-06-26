@@ -122,10 +122,7 @@ const CheckOutModal = (props: CheckoutModal) => {
 
           {currentCard()}
 
-          <Summary
-            amount={currentContext?.send_amount}
-            processingFee={currentContext?.processing_fee}
-          />
+          <Summary />
           <Button
             content={currentStep < 3 ? `Continue` : "I want to proceed"}
             onClick={() => {

@@ -5,7 +5,7 @@ import "../../../orderStyle.css";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPayoutStatus } from "../../../utils/queries";
 import { useParams } from "react-router-dom";
-import NotFound from "../../404";
+import TransactionNotFound from "../../transaction-notfound";
 import SuccessCard from "./success-card";
 import FailedCard from "./failed-card";
 import PayoutInitiated from "./payout-status/initiated";
@@ -85,7 +85,7 @@ const PayoutModal = () => {
     const error = paymentQuery.error as any;
 
     if (error.response?.status == 404) {
-      return <NotFound />;
+      return <TransactionNotFound />;
     }
   }
 

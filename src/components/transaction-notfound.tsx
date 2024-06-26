@@ -1,6 +1,6 @@
 import SadSvg from "../assets/sad-svgrepo-com.svg";
 
-const NotFound = () => {
+const TransactionNotFound = () => {
   return (
     <div className={`modal-backdrop`}>
       <div className="checkout">
@@ -21,4 +21,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default TransactionNotFound;

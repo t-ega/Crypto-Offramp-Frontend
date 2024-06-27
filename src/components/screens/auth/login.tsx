@@ -90,8 +90,8 @@ export const Login = (props: AuthProps) => {
           <div
             style={{ display: "flex", color: "white", justifyContent: "end" }}
           >
-            <a href="/auth/signup">
-              I don't have an account. Create an Account
+            <a href="/auth/signup" style={{ color: "white" }}>
+              I don't have an account? Sign Up
             </a>
           </div>
 
